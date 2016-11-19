@@ -21,4 +21,4 @@ def application(env, start_response):
     #        body.append(k + ' = ' + item + "<br>")
 
     start_response('200 OK', [('Content-Type', 'text/html')])
-    return body
+    return str(body)
