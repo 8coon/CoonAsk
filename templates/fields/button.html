@@ -1,0 +1,14 @@
+<div class="form-group-buttons">
+    <button
+            type="{% if type != None %}{{ type }}{% endif %}{% if type == None %}button{% endif %}"
+            id="ac-{{ name }}"
+            class="ac-ask-btn btn btn-default">
+
+        {% if value != None %}
+            {{ value }}
+        {% endif %} {% if value == None %}
+            Button
+        {% endif %}
+
+    </button>
+</div>

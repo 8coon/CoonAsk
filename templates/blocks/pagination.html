@@ -1,0 +1,25 @@
+<div class="ac-pagination">
+
+    {% for page in paginator.first %}
+
+        <a href="?offset={{ page.offset }}" {{ page.selected }}>{{ page.index }}</a>
+
+    {% endfor %}
+
+    {% if paginator.first_dots %} ... {% endif %}
+
+    {% for page in paginator.middle %}
+
+        <a href="?offset={{ page.offset }}" {{ page.selected }}>{{ page.index }}</a>
+
+    {% endfor %}
+
+    {% if paginator.last_dots %} ... {% endif %}
+
+    {% for page in paginator.last %}
+
+        <a href="?offset={{ page.offset }}" {{ page.selected }}>{{ page.index }}</a>
+
+    {% endfor %}
+
+</div>

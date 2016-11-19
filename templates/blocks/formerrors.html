@@ -1,0 +1,12 @@
+{% for e in form.non_field_errors %}
+
+    <div class="ac-error">{{ e }}</div>
+
+{% endfor %}
+
+
+{% if form.errors and not form.non_field_errors %}
+
+    <div class="ac-error">This form has errors in the fields highlighted!</div>
+
+{% endif %}

@@ -1,0 +1,12 @@
+{% load bleach_tags %}
+
+<textarea
+        maxlength="{{ field.field.max_length }}"
+        type="{% if type != None %}{{ type }}{% endif %}{% if type == None %}text{% endif %}"
+        class="form-control ac-form-editable ac-textarea-formatted"
+        name="{{ field.name }}"
+        id="ac-ask-{{ field.name }}"
+        placeholder="{% if field.help_text %}{{ field.help_text }}{% endif %}"
+
+        {% if field.required %} required {% endif %}
+>{% if field.value %}{{ field.value|bleach }}{% else %}{{ field.initial }}{% endif %}</textarea>

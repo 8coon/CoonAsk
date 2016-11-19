@@ -1,0 +1,82 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - {{ viewing.django_user.username }} - Profile
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>Profile: {{ viewing.django_user.username }}</a>
+
+    {% if viewing.django_user.username == user.username %}
+
+        <a href="#" id="ac-profile-edit" class="ac-nav-link">Edit</a>
+        <a href="#" id="ac-profile-discard" class="ac-nav-link">Discard</a>
+
+    {% endif %}
+
+    <a href="#"
+       id="ac-profile-questions-label"
+       class="ac-nav-link ac-nav-link-inactive">
+        Questions:
+    </a>
+
+    <a
+            href="{% url 'users' viewing.django_user.username %}"
+            id="ac-profile-questions" class="ac-nav-link">
+{{ viewing.questions_count }}
+    </a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "blocks/formerrors.html" %}
+
+    <form action="{% url 'profile' user.username %}" method="post" id="ac-profile-form-editable">
+
+        {% csrf_token %}
+
+        <div class="ac-post-desc ac-post-largo ac-profile">
+            <div class="ac-post-left">
+
+                <div class="ac-post-img">
+                    <img src="../uploads/avatars/{{ viewing.avatar }}.jpg">
+                </div>
+
+            </div>
+
+            <div class="ac-post-right">
+                <div class="ac-post-text">
+                    <div class="ac-ask-form form-horizontal">
+
+                    <!--{% include "fields/file.html" with field=form.avatar_file no_label=True %}-->
+
+                    {% include "fields/text.html" with field=form.first_name %}
+
+                    {% include "fields/text.html" with field=form.last_name %}
+
+                    {% include "fields/text.html" with field=form.status %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include "fields/formatarea.html" with field=form.info no_label=True %}
+
+    </form>
+
+{% endblock %}
+
+
+{% block __right_col %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}

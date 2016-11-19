@@ -1,0 +1,55 @@
+[
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 1,
+    "fields": {
+      "name": "Awesome",
+      "count": 32
+    }
+  },
+
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 2,
+    "fields": {
+      "name": "Cool",
+      "count": 35
+    }
+  },
+
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 3,
+    "fields": {
+      "name": "Wow",
+      "count": 70
+    }
+  },
+
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 4,
+    "fields": {
+      "name": "Amazing",
+      "count": 50
+    }
+  },
+
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 5,
+    "fields": {
+      "name": "Ambitious",
+      "count": 8
+    }
+  },
+
+  {
+    "model": "CNAskApp.CNTag",
+    "pk": 6,
+    "fields": {
+      "name": "Corresponding",
+      "count": 19
+    }
+  }
+]

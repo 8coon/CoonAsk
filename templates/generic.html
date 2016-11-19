@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+    <title>{% block title %} AskMe {% endblock %}</title>
+
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/prism.css" rel="stylesheet">
+
+	<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+
+	<link href="../static/style.css" rel="stylesheet">
+	<link href="../static/spinner.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li>
+						<a class="navbar-brand" href="{% url 'index' %}">
+							<span id="ac-logo-text">
+								Ask<span id="ac-logo-text-accent">me</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+
+
+				<ul class="nav navbar-nav navbar-right">
+
+					{% include "blocks/userbox.html" %}
+
+				</ul>
+
+				<ul class="nav navbar-nav">
+
+					{% include "blocks/searchbox.html" %}
+					{% include "blocks/askbox.html" %}
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+    <div class="container">
+		<div class="row">
+			<div class="col-sm-12" id="ac-nav-links">
+
+                {% block header %}
+
+					<a href="#" class="ac-nav-link" selected>New Questions</a>
+					<a href="#" class="ac-nav-link">Hot Questions</a>
+
+                {% endblock %}
+
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="row">
+				<div class="col-sm-9">
+
+                    <!-- Posts or other content -->
+
+					{% block success %}
+						{% if success %}
+
+							<div class="ac-success">
+								{{ success }}
+							</div>
+
+						{% endif %}
+					{% endblock %}
+
+                    {% block content %}
+                    {% endblock %}
+
+					{% block pagination %}
+                    {% include "blocks/pagination.html" %}
+					{% endblock %}
+
+					<br><br><br><br>
+
+                </div>
+
+                <div class="col-sm-3">
+
+					{% block right_col %}
+					{% include "blocks/right_col.html" %}
+					{% endblock %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar-bottom row">
+		<div class="navbar-inner" id="ac-footer">
+			<div class="container">
+
+				{% include "blocks/footer.html" %}
+
+			</div>
+		</div>
+	</div>
+
+    <script src="../static/jquery/jquery.min.js" type="text/javascript"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../static/prism.js" type="text/javascript"></script>
+	<script src="../static/spinner.js" type="text/javascript"></script>
+	<script src="../static/script.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="form-group {% if field.errors %}ac-field-error{% endif %}">
+
+    {% if no_label == None %}
+
+        <label
+                class="control-label {% if viewing %}col-sm-3{% else %}col-sm-2{% endif %}"
+                for="ac-ask-{{ name }}">
+
+            {{ field.label }}
+
+        </label>
+
+        <div class="{% if viewing %}col-sm-9{% else %}col-sm-10{% endif %}">
+
+    {% endif %}
+
+        {% block widget %}
+
+            {% include "fields/widgets/input.html" %}
+
+        {% endblock %}
+
+    {% if no_label == None %}
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="ac-field-error-text-container">
+
+        {% for e in field.errors %}
+
+            <div class="ac-field-error-text">{{ e }}</div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

@@ -1,0 +1,5 @@
+{% for member in best_members %}
+
+    <a href="{% url 'profile' member.django_user.username %}">{% include "blocks/username.html" with user=member.django_user %}</a><br>
+
+{% endfor %}

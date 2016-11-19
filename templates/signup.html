@@ -1,0 +1,50 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - Sign Up
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>Sign Up</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "blocks/formerrors.html" %}
+
+    <form action="{% url 'signup' %}" method="post">
+        <div class="ac-ask-form form-horizontal">
+            {% csrf_token %}
+
+            {% include "fields/text.html" with field=form.login %}
+
+            {% include "fields/email.html" with field=form.email %}
+
+            {% include "fields/password.html" with field=form.password %}
+
+            {% include "fields/password.html" with field=form.password_again %}
+
+            <!--
+            {% include "fields/file.html" with name="avatar" title="Avatar" value=form.avatar.value %}
+            -->
+
+            {% include "fields/submit.html" with name="signup" value="Submit" %}
+
+        </div>
+    </form>
+
+{% endblock %}
+
+
+{% block right_col %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}

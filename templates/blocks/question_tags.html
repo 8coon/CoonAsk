@@ -1,0 +1,7 @@
+{% for tag in tags %}
+
+    <span class="ac-tag" style="font-size: 100%;">
+        <a href="{% url 'tagged' tag.name %}">#{{ tag.name }}</a>
+    </span>
+
+{% endfor %}

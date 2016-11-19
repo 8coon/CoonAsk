@@ -1,0 +1,48 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - {{ category }}
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>{{ category }}</a><br>
+
+    {% for cat in categories %}
+
+        {% if not cat.hidden %}
+
+            <a
+                    href="/{{ cat.url }}/{% if cat.arg %}{{ cat.arg }}{% endif %}"
+                    class="ac-nav-link"
+            >
+                {{ cat.title }}
+            </a>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% for question in questions %}
+
+        {% include "blocks/question.html" with show_title=question.title text_content=question.short_text tags=question.get_tags %}
+
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block __right_col %}
+{% endblock %}
+
+
+{% block __pagination %}
+{% endblock %}

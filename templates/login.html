@@ -1,0 +1,43 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - Log In
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>Log In</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "blocks/formerrors.html" %}
+
+    <form action="{% url 'login' %}" method="post">
+        <div class="ac-ask-form form-horizontal">
+            {% csrf_token %}
+
+            {% include "fields/text.html" with field=form.login %}
+
+            {% include "fields/password.html" with field=form.password %}
+
+            {% include "fields/submit.html" with name="login" value="Log In" %}
+
+            <a href="{% url 'signup' %}">Don't have an account yet?</a>
+        </div>
+    </form>
+
+{% endblock %}
+
+
+{% block right_col %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}

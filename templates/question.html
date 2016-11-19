@@ -1,0 +1,76 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - {{ question.title }}
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>{{ question.title }}</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "blocks/question.html" with custom_class="ac-post-largo" text_content=question.full_text tags=question.get_tags %}
+
+
+    {% if question.answers_count > 0 %}
+
+        {% for answer in question.get_answers %}
+
+            {% include "blocks/question.html" with text_content=answer.full_text tags=None question=answer %}
+
+        {% endfor %}
+
+    {% else %}
+
+        <span class="ac-but-nobody-came-text">Nobody has answered this question yet.</span>
+
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+
+        {% for e in form.non_field_errors %}
+
+            <div class="ac-error">{{ e }}</div>
+
+        {% endfor %}
+
+        <form action="{% url 'question' question.pk %}" method="post">
+            <div class="ac-answer-form">
+                <div class="form-group">
+
+                    {% csrf_token %}
+
+                    {% include "fields/formatarea.html" with field=form.text no_label=True %}
+
+                    {% include "fields/submit.html" with name="signup" value="Answer" %}
+
+                </div>
+            </div>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">Login</a>
+        or
+        <a href="{% url 'signup' %}">create an account</a>
+        to answer this question.
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block __right_col %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}

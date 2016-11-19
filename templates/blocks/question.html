@@ -1,0 +1,54 @@
+{% load bleach_tags %}
+
+<div
+        class="ac-post-desc {% if custom_class %}{{ custom_class}}{% endif %}"
+        id="ac-post-id-{{ question.pk }}">
+
+    <div class="ac-post-left">
+        <div class="ac-post-img">
+
+            <img
+                    src="../uploads/avatars/{{ question.author.avatar }}.jpg"
+                    class="ac-post-img-clickable"
+                    onclick="document.location.href =
+                        '{% url 'profile' question.author.django_user.username %}'"
+            >
+
+            <div class="ac-post-author">
+                <a href="{% url 'profile' question.author.django_user.username %}" target="_blank">
+
+                    {% include "blocks/username.html" with user=question.author.django_user %}
+
+                </a>
+            </div>
+
+            {% include "blocks/voting.html" %}
+
+        </div>
+    </div>
+
+    <div class="ac-post-right">
+        <div class="ac-post-text">
+
+            {% if show_title %}
+
+                <a class="ac-large" href="{% url 'question' question.pk %}">
+                    {{ show_title }}
+                </a>
+
+            {% endif %}
+
+            <p>
+                {{ text_content|safe|bleach }}
+            </p>
+
+        </div>
+
+        <div class="ac-post-down">
+
+            {% include "blocks/question_tags.html" %}
+
+        </div>
+    </div>
+
+</div>

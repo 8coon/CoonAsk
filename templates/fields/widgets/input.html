@@ -1,0 +1,16 @@
+<input
+        maxlength="{{ field.field.max_length }}"
+        type="{% if type != None %}{{ type }}{% endif %}{% if type == None %}text{% endif %}"
+        class="form-control ac-form-editable"
+        name="{{ field.name }}"
+        id="ac-ask-{{ field.name }}"
+        placeholder="{% if field.help_text %}{{ field.help_text }}{% endif %}"
+
+        {% if field.value %}
+            value="{{ field.value }}"
+        {% else %}
+            value="{{ field.initial }}"
+        {% endif %}
+
+        {% if field.required %} required {% endif %}
+>

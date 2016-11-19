@@ -1,0 +1,49 @@
+{% extends "generic.html" %}
+
+{% block title %}
+
+    {{ block.super }} - New Question
+
+{% endblock %}
+
+
+{% block header %}
+
+    <a href="#" class="ac-nav-link" selected>New Question</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% for e in form.non_field_errors %}
+
+        <div class="ac-error">{{ e }}</div>
+
+    {% endfor %}
+
+    <form action="{% url 'ask' %}" method="post">
+        <div class="ac-ask-form form-horizontal">
+
+            {% csrf_token %}
+
+            {% include "fields/text.html" with field=form.title %}
+
+            {% include "fields/text.html" with field=form.tags %}
+
+            {% include "fields/formatarea.html" with field=form.text no_label=True %}
+
+            {% include "fields/submit.html" with name="signup" value="Submit" %}
+
+        </div>
+    </form>
+
+{% endblock %}
+
+
+{% block __right_col__ %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}
