@@ -81,7 +81,7 @@ def profile(request, name):
 def ask(request):
     form = CNAskForm()
 
-    if request.method == "POST":
+    if request.user.is_authenticated() and request.method == "POST":
         form = CNAskForm(request.POST)
 
         if form.is_valid():
