@@ -13,7 +13,7 @@ def application(env, start_response):
             body.append(k + ' = ' + item + "<br>")
 
     body.append('<br>POST parameters:<br>')
-    query = parse_qs(env['wsgi.input'], keep_blank_values=True)
+    query = parse_qs(env['wsgi.input'].readline().decode())
 
     for k, v in query.items():
         for item in v:
