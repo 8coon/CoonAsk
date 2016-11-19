@@ -7,9 +7,6 @@ PROJECT_NAME=CoonAsk
 rm /etc/nginx/sites-enabled/default
 ln -s ~/$PROJECT_NAME/config/nginx.conf /etc/nginx/sites-enabled/default
 
-# rm /etc/gunicorn.d/wsgi
-# ln -s ~/$PROJECT_NAME/config/gunicorn.conf /etc/gunicorn.d/wsgi
-
-service nginx restart
-service gunicorn stop
+killall gunicorn
 gunicorn --daemon --config=/home/coon/CoonAsk/config/gunicorn.conf CoonAsk.wsgi:application
+service nginx restart
