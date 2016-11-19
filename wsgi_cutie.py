@@ -6,11 +6,15 @@ def application(env, start_response):
     body = list()
 
     body.append('<h1>it kinda works...</h1>')
-    body.append('<strong>CONSIDER THIS:</strong><br>')
+    body.append('<strong>CONSIDER THIS:</strong><br><GET parameters:<br>')
 
-    for key, values in query.items():
-        for item in values:
-            body.append(key + ' = ' + item + "<br>")
+    for k, v in query.items():
+        for item in v:
+            body.append(k + ' = ' + item + "<br>")
+
+    body.append('<br>POST parameters:<br>')
+    for k, v in env["POST"]:
+        body.append(k + ' = ' + v)
 
     start_response('200 OK', [('Content-Type', 'text/html')])
     return body
