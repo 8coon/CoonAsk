@@ -12,4 +12,4 @@ ln -s ~/$PROJECT_NAME/config/nginx.conf /etc/nginx/sites-enabled/default
 
 service nginx restart
 service gunicorn stop
-gunicorn --daemon --config=~/$PROJECT_NAME/config/gunicorn.conf
+gunicorn --daemon --config=/home/coon/CoonAsk/config/gunicorn.conf CoonAsk.wsgi:application
