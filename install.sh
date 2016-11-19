@@ -11,4 +11,5 @@ ln -s ~/$PROJECT_NAME/config/nginx.conf /etc/nginx/sites-enabled/default
 # ln -s ~/$PROJECT_NAME/config/gunicorn.conf /etc/gunicorn.d/wsgi
 
 service nginx restart
-service gunicorn restart --config=~/$PROJECT_NAME/config/gunicorn.conf
+service gunicorn stop
+gunicorn --daemon --config=~/$PROJECT_NAME/config/gunicorn.conf
