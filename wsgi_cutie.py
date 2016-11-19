@@ -6,7 +6,7 @@ def application(env, start_response):
     body = list()
 
     body.append('<h1>it kinda works...</h1>')
-    body.append('<strong>CONSIDER THIS:</strong>')
+    body.append('<strong>CONSIDER THIS:</strong><br>')
 
     for key, values in query.items():
         for item in values:
